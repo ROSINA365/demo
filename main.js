@@ -1,22 +1,26 @@
-console.log('sha')
+// console.log('sha')
 
 let theme = localStorage.getItem('theme')
+if (theme)
+{
+	setTheme(theme);
+}
+//since you will be clicking single div use class provided instead if Id 
+let themeDots = document.getElementsByClassName('theme-dot');
 
-let themeDots = document.getElementById('theme-options-wrapper');
-
-
-for(var i=0; themeDots.length > i; i++){
+//prefer modern js syntax let instead of var
+for(let i=0; themeDots.length > i; i++){
 	themeDots[i].addEventListener('click', function(){
 		let mode = this.dataset.mode
 		console.log('Option clicked:', mode)
-		setTheme(mode)
-	})
+		setTheme(mode);
+	});
 
 }
 
 function setTheme(mode){
 	if (mode == 'light') {
-		document.getElementById('theme-style').href = 'style.css'
+		document.getElementById('theme-style').href = 'style.css';
 	}
 
 	if (mode == 'blue') {
@@ -30,6 +34,9 @@ function setTheme(mode){
 	if (mode == 'purple') {
 		document.getElementById('theme-style').href = 'purple.css'
 	}
+	   //after the selection above, you can save the selected theme  to local storage defined line 4 above 
+	localStorage.setItem('theme', mode)
+
 
 }
 
